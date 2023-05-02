@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ProfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('app');
 });
+Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index']);
+Route::resource('/profil', ProfilController::class);
