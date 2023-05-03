@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\BeritaController;
+use App\Http\Controllers\admin\GaleriController;
 use App\Http\Controllers\admin\ProfilController;
+use App\Http\Controllers\KecamatanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +22,6 @@ Route::get('/', function () {
 });
 Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index']);
 Route::resource('/profil', ProfilController::class);
+Route::resource('galeri', GaleriController::class);
+Route::resource('/berita', BeritaController::class);
+Route::resource('/kecamatan', KecamatanController::class);

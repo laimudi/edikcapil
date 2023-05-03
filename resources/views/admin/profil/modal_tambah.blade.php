@@ -11,19 +11,19 @@
                     <div class="mb-3">
                         <label for="tentang">Tentang</label>
                         <div class="form-group">
-                            <textarea class="form-control" name="tentang" id="" cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="tentang" id="" cols="20" rows="10" required></textarea>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="visi">Visi</label>
                         <div class="form-group">
-                            <textarea class="form-control" name="visi" id="" cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="visi" id="" cols="20" rows="10" required></textarea>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="misi">Misi</label>
                         <div class="form-group">
-                            <textarea class="form-control" name="misi" id="" cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="misi" id="" cols="20" rows="10" required></textarea>
                         </div>
                     </div>
                     <div class="mb-3">

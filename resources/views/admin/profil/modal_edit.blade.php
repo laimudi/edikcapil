@@ -5,31 +5,32 @@
                 <h5 class="modal-title" id="modalEditProfil">Edit Profil</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('profil.update',$profil->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="tentang">Tentang</label>
                         <div class="form-group">
-                            <textarea class="form-control" name="tentang" id="" cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="tentang" id="" cols="20" rows="10">{{ $profil->tentang }}</textarea>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="visi">Visi</label>
                         <div class="form-group">
-                            <textarea class="form-control" name="visi" id="" cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="visi" id="" cols="20" rows="10">{{ $profil->visi }}</textarea>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="misi">Misi</label>
                         <div class="form-group">
-                            <textarea class="form-control" name="misi" id="" cols="20" rows="10"></textarea>
+                            <textarea class="form-control" name="misi" id="" cols="20" rows="10">{{ $profil->misi }}</textarea>
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="struktur">Struktur</label>
                         <div class="form-group">
-                          <input class="form-control" type="file" id="struktur" name="struktur" required>
+                          <input class="form-control" type="file" id="struktur" name="struktur" value="{{ $profil->struktur }}" required>
                         </div>
                     </div>
                 </div>
