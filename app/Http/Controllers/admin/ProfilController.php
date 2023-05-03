@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProfilController extends Controller
 {
@@ -12,7 +14,8 @@ class ProfilController extends Controller
      */
     public function index()
     {
-        return view('admin.profil');
+        $profil = Profil::first();
+        return view('admin.profil.profil', compact('profil'));
     }
 
     /**
@@ -28,7 +31,26 @@ class ProfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validasi = Validator::make($request->all(), [
+            'struktur' => 'required|mimes:pdf'
+        ]);
+
+        if ($validasi->fails()) {
+            return redirect()->back();
+        }
+
+        $document = $request->struktur;
+        $struktur = time() . '.' . $document->getClientOriginalExtension();
+        $request->struktur->move(public_path('storage/profil-pdf/'), $struktur);
+
+        $profil = Profil::create([
+            'tentang' => $request->tentang,
+            'visi' => $request->visi,
+            'misi' => $request->misi,
+            'struktur' => $request->struktur
+        ]);
+
+        return redirect()->back();
     }
 
     /**
