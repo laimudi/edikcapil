@@ -19,24 +19,24 @@
     
           <nav id="navbar" class="navbar">
             <ul>
-              <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
+              <li><a class="nav-link" href="{{ url('/') }}">Home</a></li>
               <li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="#">Tentang Instansi</a></li>
-                  <li><a href="#">Visi & Misi</a></li>
-                  <li><a href="#">Struktur</a></li>
+                  <li><a href="/#">Tentang Instansi</a></li>
+                  <li><a href="/#">Visi & Misi</a></li>
+                  <li><a href="/#">Struktur</a></li>
                 </ul>
               </li>
-              <li class="dropdown"><a href="#"><span>Pelayanan</span> <i class="bi bi-chevron-down"></i></a>
+              <li class="dropdown"><a href="#" class="nav-link scrollto active"><span>Pelayanan</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="{{ url('kk') }}">Kartu Keluarga</a></li>
-                  <li><a href="#">KTP-EL</a></li>
-                  <li><a href="#">Kartu Indentitas Anak (KIA)</a></li>
+                  <li><a href="#">Kartu Keluarga</a></li>
+                  <li><a href="{{ url('ktp') }}">KTP-EL</a></li>
+                  <li><a href="{{ url('kia') }}">Kartu Indentitas Anak (KIA)</a></li>
                 </ul>
               </li>
-              <li><a class="nav-link scrollto" href="#about">Berita</a></li>
-              <li><a class="nav-link scrollto" href="#services">Galeri</a></li>
-              <li><a class="getstarted scrollto" href="#about">Login</a></li>
+              <li><a class="nav-link scrollto" href="/#berita">Berita</a></li>
+              <li><a class="nav-link scrollto" href="/#galeri">Galeri</a></li>
+              <li><a class="getstarted scrollto" href="{{ url('login') }}">Login</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
           </nav>

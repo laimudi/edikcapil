@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'home']);
 Route::get('/kk', [App\Http\Controllers\KKController::class, 'kk']);
+Route::get('/ktp', [App\Http\Controllers\KTPController::class, 'ktp']);
+Route::get('/kia', [App\Http\Controllers\KIAController::class, 'kia']);
 
 // Login
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
