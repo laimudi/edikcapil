@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('title', 'Profil')
 
@@ -59,11 +59,17 @@
                   {!! $profil->tentang !!}
                 </div>
                 <div class="tab-pane fade" id="visimisi" role="tabpanel" aria-labelledby="visimisi-tab">
-                  {!! $profil->visi !!}
-                  {!! $profil->misi !!}
+                  <div>
+                    <h6>VISI</h6>
+                    <p>{!! $profil->visi !!}</p>
+                  </div>
+                  <div>
+                    <h6>MISI</h6>
+                    <p>{!! $profil->misi !!}</p>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="struktur" role="tabpanel" aria-labelledby="struktur-tab">
-                  <a href="{{ asset('storage/profil-pd/'.$profil->struktur) }}"></a>
+                  <a href="{{ asset('storage/profil-pdf/'.$profil->struktur) }}"></a>
                 </div>
               </div>  
               @endif

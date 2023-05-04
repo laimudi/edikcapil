@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class KecamatanController extends Controller
@@ -11,7 +13,8 @@ class KecamatanController extends Controller
      */
     public function index()
     {
-        return view('admin.kecamtan.kecamatan');
+        $kecamatan = Kecamatan::all();
+        return view('admin.kecamatan.kecamatan', compact('kecamatan'));
     }
 
     /**
@@ -27,7 +30,9 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kecamatan = Kecamatan::create($request->all());
+
+        return redirect()->back();
     }
 
     /**
@@ -49,16 +54,22 @@ class KecamatanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $kecamatan = Kecamatan::findOrFail($id);
+        $kecamatan->update([
+            'kecamatan' => $request->kecamatan
+        ]);
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Kecamatan::destroy($id);
+        return redirect()->route('kecamatan.index');
     }
 }

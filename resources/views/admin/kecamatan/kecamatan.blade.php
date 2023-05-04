@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('title', 'Kecamatan')
 
@@ -25,7 +25,7 @@
                           Tambah Kecamatan
                           </button>
                       </li>
-                      {{-- @include('admin.berita.modal_tambah') --}}
+                      @include('admin.kecamatan.modal_tambah')
                     </ol>
                   </nav>
                   
@@ -39,13 +39,29 @@
                             <tr>
                                 <th>No</th>
                                 <th>Daftar Kecamatan</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($kecamatan as $data)
                             <tr>
-                                <th></th>
-                                <td></td>
+                                <th>{{ $loop->iteration }}</th>
+                                <td>{{ $data->kecamatan }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal" data-bs-target="#editKecamatan-{{ $data->id }}">
+                                        <i class="ri-edit-box-line"></i>
+                                    </button>
+                                    <form action="{{ route('kecamatan.destroy', $data->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="ri-delete-bin-6-line"></i>
+                                    </button>
+                                    </form>
+                                </td>
                             </tr>
+                            @include('admin.kecamatan.modal_edit')
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

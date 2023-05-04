@@ -3,7 +3,8 @@
 use App\Http\Controllers\admin\BeritaController;
 use App\Http\Controllers\admin\GaleriController;
 use App\Http\Controllers\admin\ProfilController;
-use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\admin\KecamatanController;
+use App\Http\Controllers\admin\PegawaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,11 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Login
+Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
+Route::get('/register', [App\Http\Controllers\AuthController::class, 'register']);
+
 Route::get('/', function () {
-    return view('app');
+    return view('layouts.app');
 });
 Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index']);
 Route::resource('/profil', ProfilController::class);
 Route::resource('galeri', GaleriController::class);
 Route::resource('/berita', BeritaController::class);
 Route::resource('/kecamatan', KecamatanController::class);
+Route::resource('/pegawai', PegawaiController::class);

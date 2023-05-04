@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Berita')
+@section('title', 'Pegawai')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Berita</h1>
+        <h1>Pegawai</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Berita</li>
+            <li class="breadcrumb-item active">Pegawai</li>
         </ol>
         </nav>
     </div>
@@ -21,43 +21,45 @@
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
                           <button type="button" class="btn btn-outline-primary"
-                          data-bs-toggle="modal" data-bs-target="#tambahBerita">
-                          Tambah Berita
+                          data-bs-toggle="modal" data-bs-target="#tambahPegawai">
+                          Tambah Pegawai
                           </button>
                       </li>
-                      @include('admin.berita.modal_tambah')
+                      @include('admin.pegawai.modal_tambah')
                     </ol>
                   </nav>
                   
                 </div>
             </div>
             <div class="card-body shadow">
-                <h5 class="card-title">Data Berita</h5>
+                <h5 class="card-title">Data Pegawai</h5>
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Judul</th>
-                                <th>Isi Berita</th>
-                                <th>Gambar</th>
+                                <th>NIP</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>Pangkat</th>
+                                <th>Jabatan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($berita as $data)
+                            @foreach ($pegawai as $data)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
-                                <td>{{ $data->judul }}</td>
-                                <td>{!! $data->isi_berita !!}</td>
+                                <td>{{ $data->nip }}</td>
+                                <td>{{ $data->nama }}</td>
+                                <td>{{ $data->alamat }}</td>
+                                <td>{{ $data->pangkat }}</td>
+                                <td>{{ $data->jabatan }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/berita/'. $data->gambar) }}" width="100px" height="100px" alt="">
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal" data-bs-target="#editBerita-{{ $data->id }}">
+                                    <button type="button" class="btn btn-outline-warning float-sm-start mb-2 me-2" data-bs-toggle="modal" data-bs-target="#editPegawai-{{ $data->id }}">
                                         <i class="ri-edit-box-line"></i>
                                     </button>
-                                    <form action="{{ route('berita.destroy', $data->id) }}" method="POST">
+                                    <form action="{{ route('pegawai.destroy', $data->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-outline-danger">
@@ -66,7 +68,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            @include('admin.berita.modal_edit')    
+                            @include('admin.pegawai.modal_edit')
                             @endforeach
                         </tbody>
                     </table>

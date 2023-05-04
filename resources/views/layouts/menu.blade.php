@@ -15,13 +15,13 @@
 </li>
 <li class="nav-item">
   <a class="nav-link {{ Request::is('galeri') ? 'collapsed' : '' }}" href="{{ route('galeri.index') }}">
-    <i class="bi bi-file-image"></i>
+    <i class="bi bi-image-fill"></i>
     <span>Galeri</span>
   </a>
 </li>
 <li class="nav-item">
   <a class="nav-link {{ Request::is('berita') ? 'collapsed' : '' }}" href="{{ route('berita.index') }}">
-    <i class="bi bi-file-text-fill"></i>
+    <i class="bi bi-journal-text"></i>
     <span>Berita</span>
   </a>
 </li>
@@ -29,5 +29,11 @@
   <a class="nav-link {{ Request::is('kecamatan') ? 'collapsed' : '' }}" href="{{ route('kecamatan.index') }}">
     <i class="bi bi-file-text-fill"></i>
     <span>Kecamatan</span>
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link {{ Request::is('pegawai') ? 'collapsed' : '' }}" href="{{ route('pegawai.index') }}">
+    <i class="bi bi-people"></i>
+    <span>Pegawai</span>
   </a>
 </li>
