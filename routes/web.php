@@ -18,14 +18,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home']);
+Route::get('/kk', [App\Http\Controllers\KKController::class, 'kk']);
+
 // Login
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
 Route::get('/register', [App\Http\Controllers\AuthController::class, 'register']);
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
-Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index']);
+Route::get('/dashboard', [App\Http\Controllers\admin\DashboardController::class, 'index']);
 Route::resource('/profil', ProfilController::class);
 Route::resource('galeri', GaleriController::class);
 Route::resource('/berita', BeritaController::class);
