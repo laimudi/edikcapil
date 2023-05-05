@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\GaleriController;
 use App\Http\Controllers\admin\ProfilController;
 use App\Http\Controllers\admin\KecamatanController;
 use App\Http\Controllers\admin\PegawaiController;
+use App\Http\Controllers\admin\PelayananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +34,4 @@ Route::resource('galeri', GaleriController::class);
 Route::resource('/berita', BeritaController::class);
 Route::resource('/kecamatan', KecamatanController::class);
 Route::resource('/pegawai', PegawaiController::class);
+Route::resource('/pelayanan', PelayananController::class);
