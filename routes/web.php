@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\KecamatanController;
 use App\Http\Controllers\admin\PegawaiController;
 use App\Http\Controllers\admin\PelayananController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\kadis\PegawaiiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +29,7 @@ Route::get('/kia', [App\Http\Controllers\KIAController::class, 'kia']);
 // Login and Register
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
-    Route::post('storeLogin', [App\Http\Controllers\AuthController::class, 'storeLogin']);
+    Route::post('/login', [App\Http\Controllers\AuthController::class, 'storeLogin']);
 
     Route::get('/register', [App\Http\Controllers\AuthController::class, 'register']);
 });
@@ -38,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
         // Admin
-        Route::get('/dashboard', [App\Http\Controllers\admin\DashboardController::class, 'index']);
+        Route::get('/', [App\Http\Controllers\admin\DashboardController::class, 'index'])->name('admin.dashboard');
         Route::resource('/profil', ProfilController::class);
         Route::resource('galeri', GaleriController::class);
         Route::resource('/berita', BeritaController::class);
@@ -49,11 +50,13 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Kadis
     Route::group(['middleware' => ['role:kadis'], 'prefix' => 'kadis'], function () {
-        Route::get('/dashboard', [App\Http\Controllers\kadis\DashboardController::class, 'index']);
+        Route::get('/', [App\Http\Controllers\kadis\DashboardController::class, 'index'])->name('kadis.dashboard');
+        Route::resource('/pegawaii', PegawaiiController::class);
     });
 
+    // Pengguna
     Route::group(['middleware' => ['role:pengguna'], 'prefix' => 'pengguna'], function () {
-        Route::get('/dashboard', [App\Http\Controllers\pengguna\DashboardController::class, 'index']);
+        Route::get('/', [App\Http\Controllers\pengguna\DashboardController::class, 'index'])->name('pengguna.dashboard');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

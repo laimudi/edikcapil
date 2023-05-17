@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Galeri')
+@section('title', 'Admin | Galeri')
 
 @section('content')
     <div class="pagetitle">

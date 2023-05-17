@@ -1,4 +1,4 @@
-// Admin
+{{-- Admin --}}
 @if (auth()->user()->role->name == 'admin')
   <li class="nav-item">
     <a class="nav-link {{ Request::is('dashboard/admin') ? 'collapsed' : '' }}" href="{{ url('/admin') }}">
@@ -73,7 +73,7 @@
     </a>
   </li>
 
-// Kadis
+{{-- Kadis --}}
 @elseif (auth()->user()->role->name == 'kadis')
   <li class="nav-item">
     <a class="nav-link {{ Request::is('dashboard/kadis') ? 'collapsed' : '' }}" href="{{ url('/kadis') }}">
@@ -82,6 +82,16 @@
     </a>
   </li>
 
+  <li class="nav-heading">Pages</li>
+
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('pegawaii') ? 'collapsed' : '' }}" href="{{ route('pegawaii.index') }}">
+      <i class="bi bi-people"></i>
+      <span>Pegawai</span>
+    </a>
+  </li>
+
+{{-- Pengguna --}}
 @elseif (auth()->user()->role->name == 'pengguna')
   <li class="nav-item">
     <a class="nav-link {{ Request::is('dashboard/pengguna') ? 'collapsed' : '' }}" href="{{ url('/pengguna') }}">

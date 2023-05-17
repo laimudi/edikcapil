@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Profil')
+@section('title', 'Admin | Profil')
 
 @section('content')
     <div class="pagetitle">
