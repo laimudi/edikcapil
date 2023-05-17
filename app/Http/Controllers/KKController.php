@@ -8,6 +8,6 @@ class KKController extends Controller
 {
     public function kk()
     {
-        return view('pengguna.kk');
+        return view('kk');
     }
 }

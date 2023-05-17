@@ -8,6 +8,6 @@ class KTPController extends Controller
 {
     public function ktp()
     {
-        return view('pengguna.ktp');
+        return view('ktp');
     }
 }

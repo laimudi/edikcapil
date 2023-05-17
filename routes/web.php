@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\ProfilController;
 use App\Http\Controllers\admin\KecamatanController;
 use App\Http\Controllers\admin\PegawaiController;
 use App\Http\Controllers\admin\PelayananController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,19 +20,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 Route::get('/kk', [App\Http\Controllers\KKController::class, 'kk']);
 Route::get('/ktp', [App\Http\Controllers\KTPController::class, 'ktp']);
 Route::get('/kia', [App\Http\Controllers\KIAController::class, 'kia']);
 
-// Login
-Route::get('/login', [App\Http\Controllers\AuthController::class, 'login']);
-Route::get('/register', [App\Http\Controllers\AuthController::class, 'register']);
+// Login and Register
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+    Route::post('storeLogin', [App\Http\Controllers\AuthController::class, 'storeLogin']);
 
-Route::get('/dashboard', [App\Http\Controllers\admin\DashboardController::class, 'index']);
-Route::resource('/profil', ProfilController::class);
-Route::resource('galeri', GaleriController::class);
-Route::resource('/berita', BeritaController::class);
-Route::resource('/kecamatan', KecamatanController::class);
-Route::resource('/pegawai', PegawaiController::class);
-Route::resource('/pelayanan', PelayananController::class);
+    Route::get('/register', [App\Http\Controllers\AuthController::class, 'register']);
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function () {
+        // Admin
+        Route::get('/dashboard', [App\Http\Controllers\admin\DashboardController::class, 'index']);
+        Route::resource('/profil', ProfilController::class);
+        Route::resource('galeri', GaleriController::class);
+        Route::resource('/berita', BeritaController::class);
+        Route::resource('/kecamatan', KecamatanController::class);
+        Route::resource('/pegawai', PegawaiController::class);
+        Route::resource('/pelayanan', PelayananController::class);
+    });
+
+    // Kadis
+    Route::group(['middleware' => ['role:kadis'], 'prefix' => 'kadis'], function () {
+        Route::get('/dashboard', [App\Http\Controllers\kadis\DashboardController::class, 'index']);
+    });
+
+    Route::group(['middleware' => ['role:pengguna'], 'prefix' => 'pengguna'], function () {
+        Route::get('/dashboard', [App\Http\Controllers\pengguna\DashboardController::class, 'index']);
+    });
+
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+});
