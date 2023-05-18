@@ -99,5 +99,35 @@
       <span>Dashboard</span>
     </a>
   </li>
+
+  <li class="nav-heading">Pages</li>
+
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('kartukk') || Request::is('kartukk/*') ? 'collapsed' : '' }}" href="{{ route('kartukk.index') }}">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>Kartu Keluarga</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('pelayanan') ? 'collapsed' : '' }}" href="{{ route('pelayanan.index') }}">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>KTP-el</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('pelayanan') ? 'collapsed' : '' }}" href="{{ route('pelayanan.index') }}">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>Kartu Identitas Anak (KIA)</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link {{ Request::is('akta') || Request::is('akta/*') ? 'collapsed' : '' }}" href="{{ route('akta.index') }}">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>Akta Kelahiran</span>
+    </a>
+  </li>
 @endif
 
