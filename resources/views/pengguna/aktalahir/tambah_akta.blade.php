@@ -19,50 +19,51 @@
                 
                 <h5 class="card-title">Input Data Akta Kelahiran</h5>
 
-                <form class="row g-3" action="">
+                <form class="row g-3" action="{{ route('akta.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="col-md-6">
-                        <label for="" class="form-label">NIK</label>
-                        <input type="" class="form-control" id="">
+                        <label for="nik" class="form-label">NIK</label>
+                        <input type="text" class="form-control" name="nik" id="nik">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Nama</label>
-                        <input type="" class="form-control" id="">
+                        <label for="nama" class="form-label">Nama</label>
+                        <input type="text" class="form-control" name="nama" id="nama">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Tempat Lahir</label>
-                        <input type="" class="form-control" id="">
+                        <label for="tmp_lahir" class="form-label">Tempat Lahir</label>
+                        <input type="text" class="form-control" name="tmp_lahir" id="tmp_lahir">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Tanggal Lahir</label>
-                        <input type="" class="form-control" id="">
+                        <label for="tgl_lahir" class="form-label">Tanggal Lahir</label>
+                        <input type="text" class="form-control" name="tgl_lahir" id="tgl_lahir">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Tahun</label>
-                        <input type="" class="form-control" id="">
+                        <label for="thn_lahir" class="form-label">Tahun Lahir</label>
+                        <input type="text" class="form-control" name="thn_lahir" id="thn_lahir">
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label" for="">Jenis Kelamin</label>
-                        <select class="form-select" id="">
+                        <label class="form-label" for="gender">Jenis Kelamin</label>
+                        <select class="form-select" name="gender" id="gender">
                             <option selected>Jenis Kelamin</option>
-                            <option value="1">Laki-Laki</option>
-                            <option value="2">Perempuna</option>
+                            <option value="Laki-Laki">Laki-Laki</option>
+                            <option value="Perempuan">Perempuna</option>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Anak Ke</label>
-                        <input type="" class="form-control" id="">
+                        <label for="anak" class="form-label">Anak Ke</label>
+                        <input type="text" class="form-control" name="anak" id="anak">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Nama Ayah</label>
-                        <input type="" class="form-control" id="">
+                        <label for="nm_ayah" class="form-label">Nama Ayah</label>
+                        <input type="text" class="form-control" name="nm_ayah" id="nm_ayah">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Nama Ibu</label>
-                        <input type="" class="form-control" id="">
+                        <label for="nm_ibu" class="form-label">Nama Ibu</label>
+                        <input type="text" class="form-control" name="nm_ibu" id="nm_ibu">
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Upload Berkas</label>
-                        <input class="form-control" type="file" id="">
+                        <label for="berkas" class="form-label">Upload Berkas</label>
+                        <input class="form-control" type="file" name="berkas" id="berkas">
                         <p style="color:red">Berkas di gabungkan menjadi 1 file dalam bentuk format PDF</p>
                     </div>
                     <div class="mb-3">

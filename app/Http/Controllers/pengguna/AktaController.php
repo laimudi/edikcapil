@@ -15,7 +15,7 @@ class AktaController extends Controller
     public function index()
     {
         $akta = Akta::all();
-        return view('pengguna.aktalahir.akta', compact('profil'));
+        return view('pengguna.aktalahir.akta', compact('akta'));
     }
 
     /**
@@ -38,6 +38,25 @@ class AktaController extends Controller
         if ($validasi->fails()) {
             return redirect()->back();
         }
+
+        $document = $request->berkas;
+        $berkas = time() . '.' . $document->getClientOriginalExtension();
+        $request->berkas->move(public_path('storage/akta-pdf/'), $berkas);
+
+        $akta = Akta::create([
+            'nik' => $request->nik,
+            'nama' => $request->nama,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'thn_lahir' => $request->thn_lahir,
+            'gender' => $request->gender,
+            'anak' => $request->anak,
+            'nm_ayah' => $request->nm_ayah,
+            'nm_ibu' => $request->nm_ibu,
+            'berkas' => $request->berkas
+        ]);
+
+        return view('pengguna.aktalahir.akta');
     }
 
     /**
