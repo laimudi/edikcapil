@@ -64,7 +64,7 @@
         <br>
         <table style="margin-left:auto;margin-right:auto">
             <tr>
-                <td><img src="logo.jpg" width="80px" height="80px"></td>
+                <td><img src="logo.png" width="80px" height="80px"></td>
             </tr>
         </table>
         <br>

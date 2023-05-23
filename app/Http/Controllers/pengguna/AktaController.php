@@ -97,7 +97,6 @@ class AktaController extends Controller
     {
         $akta = Akta::findOrFail($id);
         $pdf = Pdf::loadView('pengguna.aktalahir.cetak_akta_lahir', compact('akta'));
-        // return $pdf->download('akta-kelahiran.pdf');
-        return $pdf->stream('akta-kelahiran.pdf');
+        return $pdf->download('akta-kelahiran.pdf');
     }
 }

@@ -49,16 +49,19 @@
                                 <td>{{ $data->nik }}</td>
                                 <td>{{ $data->nama }}</td>
                                 <td>
+                                    
                                     <form action="{{ route('akta.destroy', $data->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger">
                                             <i class="ri-delete-bin-6-line"></i>
                                         </button>
+
+                                        <a class="btn btn-outline-danger" data-placement="top" href="{{ route('cetak.akta', $data->id) }}" target="_blank">
+                                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                                        </a>
                                     </form>
-                                    <a class="btn btn-outline-danger" href="{{ route('cetak.akta', $data->id) }}" target="_blank">
-                                        <i class="bi bi-file-earmark-pdf-fill"></i>
-                                    </a>
+                                    
                                 </td>
                             </tr>
                             @endforeach
