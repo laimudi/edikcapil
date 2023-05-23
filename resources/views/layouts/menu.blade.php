@@ -16,31 +16,31 @@
     </a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-    <i class="bi bi-menu-button-wide"></i><span>Pengajuan</span><i class="bi bi-chevron-down ms-auto"></i>
-  </a>
-  <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-    <li>
-      <a href="#">
-        <i class="bi bi-circle"></i><span>Kartu Keluarga</span>
-      </a>
-    </li>
-    <li>
-      <a href="#" class="">
-        <i class="bi bi-circle"></i><span>KTP-el</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="bi bi-circle"></i><span>Kartu Identitas Anak (KIA)</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class="bi bi-circle"></i><span>Akta Kelahiran</span>
-      </a>
-    </li>
-  </ul>
+    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-menu-button-wide"></i><span>Pengajuan</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="#">
+          <i class="bi bi-circle"></i><span>Kartu Keluarga</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="">
+          <i class="bi bi-circle"></i><span>KTP-el</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bi bi-circle"></i><span>Kartu Identitas Anak (KIA)</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bi bi-circle"></i><span>Akta Kelahiran</span>
+        </a>
+      </li>
+    </ul>
   </li>
   <li class="nav-item">
     <a class="nav-link {{ Request::is('pelayanan') ? 'collapsed' : '' }}" href="{{ route('pelayanan.index') }}">
@@ -110,7 +110,7 @@
   </li>
 
   <li class="nav-item">
-    <a class="nav-link {{ Request::is('pelayanan') ? 'collapsed' : '' }}" href="{{ route('pelayanan.index') }}">
+    <a class="nav-link {{ Request::is('kartup') || Request::is('kartup/*') ? 'collapsed' : '' }}" href="{{ route('kartup.index') }}">
       <i class="bi bi-exclamation-circle-fill"></i>
       <span>KTP-el</span>
     </a>

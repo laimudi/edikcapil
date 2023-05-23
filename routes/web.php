@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\PegawaiController;
 use App\Http\Controllers\admin\PelayananController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\kadis\PegawaiiController;
+use App\Http\Controllers\pengguna\KtppController;
 use App\Http\Controllers\pengguna\AktaController;
 use App\Http\Controllers\pengguna\KartuKKController;
 use Illuminate\Support\Facades\Route;
@@ -60,7 +61,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['role:pengguna'], 'prefix' => 'pengguna'], function () {
         Route::get('/', [App\Http\Controllers\pengguna\DashboardController::class, 'index'])->name('pengguna.dashboard');
         Route::resource('/kartukk', KartuKKController::class);
+        Route::resource('/kartup', KtppController::class);
+
         Route::resource('/akta', AktaController::class);
+        Route::get('/cetakpdf/{id}', [App\Http\Controllers\pengguna\AktaController::class, 'cetakpdf']);
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

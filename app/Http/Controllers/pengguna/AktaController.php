@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\pengguna;
 
-use App\Http\Controllers\Controller;
 use App\Models\Akta;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class AktaController extends Controller
@@ -88,6 +89,14 @@ class AktaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Akta::destroy($id);
+        return redirect()->route('akta.index');
+    }
+
+    public function cetakpdf($id)
+    {
+        $akta = Akta::findOrFail($id);
+        $pdf = Pdf::loadView('pengguna.aktalahircetakpdf', ['akta' => $akta]);
+        return $pdf->download('akta-kelahiran.pdf');
     }
 }

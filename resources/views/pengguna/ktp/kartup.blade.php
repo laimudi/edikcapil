@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Pengguna | Akhta Kelahiran')
+@section('title', 'Pengguna | KTP')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Akta Kelahiran</h1>
+        <h1>Kartu Tanda Penduduk</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Akta Kelahiran</li>
+            <li class="breadcrumb-item active">Kartu Tanda Penduduk</li>
         </ol>
         </nav>
     </div>
@@ -21,7 +21,7 @@
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
                           <a type="button" class="btn btn-outline-primary"
-                          href="{{ route('akta.create') }}">
+                          href="">
                           Tambah Data
                           </a>
                       </li>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="card-body shadow">
-                <h5 class="card-title">Data Akta Kelahiran</h5>
+                <h5 class="card-title">Data Kartu Tanda Penduduk</h5>
                 <div class="table-responsive">
                     <table id="example" class="table table-striped table-bordered">
                         <thead>
@@ -43,7 +43,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($akta as $data)
+                            {{-- @foreach ($akta as $data)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $data->nik }}</td>
@@ -56,12 +56,12 @@
                                             <i class="ri-delete-bin-6-line"></i>
                                         </button>
                                     </form>
-                                    <a href="{{ url('akta.cetakpdf',$data->id) }}" target="_blank" class="btn btn-danger">
+                                    <a href="{{ url('cetakpdf') }}" target="_blank" class="btn btn-danger">
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
                                     </a>
                                 </td>
                             </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
