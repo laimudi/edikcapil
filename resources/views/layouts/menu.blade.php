@@ -90,6 +90,33 @@
       <span>Pegawai</span>
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>Kartu Keluarga</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>KTP-el</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>Kartu Identitas Anak (KIA)</span>
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link" href="#">
+      <i class="bi bi-exclamation-circle-fill"></i>
+      <span>Akta Kelahiran</span>
+    </a>
+  </li>
 
 {{-- Pengguna --}}
 @elseif (auth()->user()->role->name == 'pengguna')

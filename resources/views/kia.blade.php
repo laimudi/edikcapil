@@ -32,6 +32,7 @@
                   <li><a href="{{ url('kk') }}">Kartu Keluarga</a></li>
                   <li><a href="{{ url('ktp') }}">KTP-EL</a></li>
                   <li><a href="#">Kartu Indentitas Anak (KIA)</a></li>
+                  <li><a href="{{ url('akta') }}">Akta Kelahiran</a></li>
                 </ul>
               </li>
               <li><a class="nav-link scrollto" href="/#berita">Berita</a></li>
