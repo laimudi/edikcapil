@@ -28,6 +28,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('hom
 Route::get('/kk', [App\Http\Controllers\KKController::class, 'kk']);
 Route::get('/ktp', [App\Http\Controllers\KTPController::class, 'ktp']);
 Route::get('/kia', [App\Http\Controllers\KIAController::class, 'kia']);
+Route::get('/aktalahir', [App\Http\Controllers\AktaLahirController::class, 'aktalahir']);
 
 // Login and Register
 Route::middleware(['guest'])->group(function () {
@@ -64,7 +65,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/kartup', KtppController::class);
 
         Route::resource('/akta', AktaController::class);
-        Route::get('/cetakpdf/{id}', [App\Http\Controllers\pengguna\AktaController::class, 'cetakpdf']);
+        Route::get('aktalahir/akta/cetak/{id}', [App\Http\Controllers\pengguna\AktaController::class, 'cetakAkta'])->name('cetak.akta');
     });
 
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');

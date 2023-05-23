@@ -56,7 +56,7 @@
                                             <i class="ri-delete-bin-6-line"></i>
                                         </button>
                                     </form>
-                                    <a href="{{ url('akta.cetakpdf',$data->id) }}" target="_blank" class="btn btn-danger">
+                                    <a class="btn btn-outline-danger" href="{{ route('cetak.akta', $data->id) }}" target="_blank">
                                         <i class="bi bi-file-earmark-pdf-fill"></i>
                                     </a>
                                 </td>

@@ -21,4 +21,9 @@ class Akta extends Model
         'nm_ibu',
         'berkas'
     ];
+
+    public function akta()
+    {
+        return $this->hasOne(Akta::class);
+    }
 }

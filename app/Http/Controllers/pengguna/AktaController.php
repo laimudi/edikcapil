@@ -93,10 +93,11 @@ class AktaController extends Controller
         return redirect()->route('akta.index');
     }
 
-    public function cetakpdf($id)
+    public function cetakAkta($id)
     {
         $akta = Akta::findOrFail($id);
-        $pdf = Pdf::loadView('pengguna.aktalahircetakpdf', ['akta' => $akta]);
-        return $pdf->download('akta-kelahiran.pdf');
+        $pdf = Pdf::loadView('pengguna.aktalahir.cetak_akta_lahir', compact('akta'));
+        // return $pdf->download('akta-kelahiran.pdf');
+        return $pdf->stream('akta-kelahiran.pdf');
     }
 }
