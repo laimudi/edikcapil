@@ -5,6 +5,8 @@ namespace App\Http\Controllers\pengguna;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kecamatan;
+use App\Models\Ktp;
 
 class KtppController extends Controller
 {
@@ -13,7 +15,8 @@ class KtppController extends Controller
      */
     public function index()
     {
-        return view('pengguna.ktp.kartup');
+        $ktp = Ktp::all();
+        return view('pengguna.ktp.kartup', compact('ktp'));
     }
 
     /**
@@ -21,7 +24,8 @@ class KtppController extends Controller
      */
     public function create()
     {
-        //
+        $kecamatan = Kecamatan::select('id', 'kecamatan')->get();
+        return view('pengguna.ktp.tambah_ktp', compact('kecamatan'));
     }
 
     /**

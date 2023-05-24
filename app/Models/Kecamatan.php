@@ -12,4 +12,9 @@ class Kecamatan extends Model
     protected $fillable = [
         'kecamatan'
     ];
+
+    public function ktp()
+    {
+        return $this->hasMany(Ktp::class, 'kecamatan_id', 'id');
+    }
 }

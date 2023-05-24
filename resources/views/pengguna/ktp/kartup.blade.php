@@ -21,7 +21,7 @@
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item">
                           <a type="button" class="btn btn-outline-primary"
-                          href="">
+                          href="{{ route('kartup.create') }}">
                           Tambah Data
                           </a>
                       </li>
