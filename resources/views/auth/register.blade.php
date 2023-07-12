@@ -34,7 +34,7 @@
                         <h5 class="card-title text-center pb-0 fs-4">Buat Akun</h5>
                       </div>
     
-                      <form action="" method="POST" class="row g-3 needs-validation" novalidate>
+                      <form action="{{ route('register') }}" method="POST" class="row g-3 needs-validation" novalidate>
                         @csrf
                         <div class="col-12">
                           <input type="hidden" name="role_id" class="form-control" id="role_id" value="2" required>
