@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\pengguna;
 
 use App\Http\Controllers\Controller;
-
+use App\Models\KartuKK;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class KartuKKController extends Controller
@@ -13,7 +14,9 @@ class KartuKKController extends Controller
      */
     public function index()
     {
-        return view('pengguna.kk.kartukk');
+        $kartukels = KartuKK::all();
+        $kecamatans = Kecamatan::all();
+        return view('pengguna.kk.kartukk', compact('kartukels', 'kecamatans'));
     }
 
     /**
@@ -29,7 +32,33 @@ class KartuKKController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $kartukels = KartuKK::create([
+            'nomor_kk',
+            'nm_kl',
+            'alamat',
+            'rt',
+            'kode_pos',
+            'kelurahan',
+            'kecamatan_id',
+            'kabupaten',
+            'provinsi',
+            'nama',
+            'nik',
+            'gender',
+            'tmp_lahir',
+            'tgl_lahir',
+            'agaman',
+            'pendidikan',
+            'pekerjaan',
+            'status',
+            'status_kk',
+            'warga_negara',
+            'nomor_ps',
+            'nomor_kitap',
+            'nm_ayah',
+            'nm_ibu',
+            'berkas'
+        ]);
     }
 
     /**

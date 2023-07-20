@@ -37,7 +37,6 @@
                       <form action="{{ route('register') }}" method="POST" class="row g-3 needs-validation" novalidate>
                         @csrf
                         <div class="col-12">
-                          <input type="hidden" name="role_id" class="form-control" id="role_id" value="2" required>
                           <label for="name" class="form-label">Nama</label>
                           <input type="text" name="name" class="form-control" id="name" required>
                         </div>

@@ -10,12 +10,16 @@ class KartuKK extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nomor_kk',
         'nm_kl',
         'alamat',
         'rt',
         'kode_pos',
         'kelurahan',
+        'kecamatan_id',
+        'kabupaten',
+        'provinsi',
         'nama',
         'nik',
         'gender',
@@ -39,8 +43,13 @@ class KartuKK extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function kartukel()
+    public function kecamatan()
     {
-        return $this->belongsTo(KartuKK::class, 'kecamatan_id', 'id');
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

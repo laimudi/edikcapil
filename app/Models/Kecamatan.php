@@ -13,8 +13,13 @@ class Kecamatan extends Model
         'kecamatan'
     ];
 
-    public function ktp()
+    public function kartukel()
     {
-        return $this->hasMany(Ktp::class, 'kecamatan_id', 'id');
+        return $this->hasMany(KartuKK::class, 'kecamatan_id', 'id');
     }
+
+    // public function ktp()
+    // {
+    //     return $this->hasMany(Ktp::class, 'kecamatan_id', 'id');
+    // }
 }

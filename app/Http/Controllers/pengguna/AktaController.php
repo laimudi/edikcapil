@@ -45,6 +45,7 @@ class AktaController extends Controller
         $request->berkas->move(public_path('storage/akta-pdf/'), $berkas);
 
         $akta = Akta::create([
+            'user_id' => auth()->id(),
             'nik' => $request->nik,
             'nama' => $request->nama,
             'tmp_lahir' => $request->tmp_lahir,

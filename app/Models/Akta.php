@@ -10,6 +10,7 @@ class Akta extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'nik',
         'nama',
         'tmp_lahir',
@@ -22,8 +23,8 @@ class Akta extends Model
         'berkas'
     ];
 
-    public function akta()
+    public function user()
     {
-        return $this->hasOne(Akta::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

@@ -42,11 +42,15 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
+                        
                         <tbody>
+                            @foreach ($kartukels as $kartukel)
+                                
+                            @endforeach
                             <tr>
-                                <th></th>
-                                <td></td>
-                                <td></td>
+                                <th>{{ $loop->iteration }}</th>
+                                <td>{{ $kartukel->nm_kl }}</td>
+                                <td>{{ $kartukel->berkas }}</td>
                                 <td></td>
                             </tr>
                         </tbody>
