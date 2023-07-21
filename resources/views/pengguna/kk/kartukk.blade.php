@@ -45,14 +45,13 @@
                         
                         <tbody>
                             @foreach ($kartukels as $kartukel)
-                                
-                            @endforeach
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $kartukel->nm_kl }}</td>
                                 <td>{{ $kartukel->berkas }}</td>
                                 <td></td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

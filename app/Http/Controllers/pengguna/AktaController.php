@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pengguna;
 
 use App\Models\Akta;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
@@ -15,8 +16,9 @@ class AktaController extends Controller
      */
     public function index()
     {
-        $akta = Akta::all();
-        return view('pengguna.aktalahir.akta', compact('akta'));
+        $user = User::where('id', auth()->user()->id)->first();
+        $aktas = Akta::where('user_id', $user->id)->get();
+        return view('pengguna.aktalahir.akta', compact('aktas', 'user'));
     }
 
     /**
@@ -58,7 +60,7 @@ class AktaController extends Controller
             'berkas' => $request->berkas
         ]);
 
-        return view('pengguna.aktalahir.akta');
+        return redirect()->root('pengguna.aktalahir');
     }
 
     /**

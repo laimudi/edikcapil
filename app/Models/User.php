@@ -50,11 +50,11 @@ class User extends Authenticatable
 
     public function kartukel()
     {
-        return $this->hasOne(KartuKK::class);
+        return $this->hasMany(KartuKK::class);
     }
 
     public function akta()
     {
-        return $this->hasOne(Akta::class);
+        return $this->hasMany(Akta::class);
     }
 }

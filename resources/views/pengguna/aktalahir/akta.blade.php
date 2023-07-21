@@ -43,7 +43,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($akta as $data)
+                            @foreach ($aktas as $data)
                             <tr>
                                 <th>{{ $loop->iteration }}</th>
                                 <td>{{ $data->nik }}</td>
