@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\pengguna;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\KartuKK;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
 
 class KartuKKController extends Controller
 {
@@ -14,9 +18,9 @@ class KartuKKController extends Controller
      */
     public function index()
     {
-        $kartukels = KartuKK::all();
-        $kecamatans = Kecamatan::all();
-        return view('pengguna.kk.kartukk', compact('kartukels', 'kecamatans'));
+        $user = User::where('id', auth()->user()->id)->first();
+        $kartukels = KartuKK::where('user_id', $user->id)->get();
+        return view('pengguna.kk.kartukk', compact('user', 'kartukels'));
     }
 
     /**
@@ -24,7 +28,8 @@ class KartuKKController extends Controller
      */
     public function create()
     {
-        return view('pengguna.kk.tambah_kk');
+        $kecamatans = Kecamatan::select('id', 'kecamatan')->get();
+        return view('pengguna.kk.tambah_kk', compact('kecamatans'));
     }
 
     /**
@@ -32,33 +37,47 @@ class KartuKKController extends Controller
      */
     public function store(Request $request)
     {
-        $kartukels = KartuKK::create([
-            'nomor_kk',
-            'nm_kl',
-            'alamat',
-            'rt',
-            'kode_pos',
-            'kelurahan',
-            'kecamatan_id',
-            'kabupaten',
-            'provinsi',
-            'nama',
-            'nik',
-            'gender',
-            'tmp_lahir',
-            'tgl_lahir',
-            'agaman',
-            'pendidikan',
-            'pekerjaan',
-            'status',
-            'status_kk',
-            'warga_negara',
-            'nomor_ps',
-            'nomor_kitap',
-            'nm_ayah',
-            'nm_ibu',
-            'berkas'
+        $validasi = Validator::make($request->all(), [
+            'berkas' => 'required|mimes:pdf'
         ]);
+
+        if ($validasi->fails()) {
+            return redirect()->back();
+        }
+
+        $document = $request->berkas;
+        $berkas = time() . '.' . $document->getClientOriginalExtension();
+        $request->berkas->move(public_path('storage/kk-pdf'), $berkas);
+
+        $kartukels = KartuKK::create([
+            'user_id' => auth()->id(),
+            'nomor_kk' => $request->nomor_kk,
+            'nm_kl' => $request->nm_kl,
+            'alamat' => $request->alamat,
+            'rt' => $request->rt,
+            'kode_pos' => $request->kode_pos,
+            'kelurahan' => $request->kelurahan,
+            'kecamatan_id' => $request->kecamatan_id,
+            'kabupaten' => $request->kabupaten,
+            'provinsi' => $request->provinsi,
+            'nama' => $request->nama,
+            'nik' => $request->nik,
+            'gender' => $request->gender,
+            'tmp_lahir' => $request->tmp_lahir,
+            'tgl_lahir' => $request->tgl_lahir,
+            'agaman' => $request->agama,
+            'pendidikan' => $request->pendidikan,
+            'pekerjaan' => $request->pekerjaan,
+            'status' => $request->status,
+            'status_kk' => $request->status_kk,
+            'warga_negara' => $request->warga_negara,
+            'nomor_ps' => $request->nomor_ps,
+            'nomor_kitap' => $request->nomor_kitap,
+            'nm_ayah' => $request->nm_ayah,
+            'nm_ibu' => $request->nm_ibu,
+            'berkas' => $request->berkas
+        ]);
+        return redirect()->root()->back();
     }
 
     /**
@@ -91,5 +110,13 @@ class KartuKKController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function cetakKK()
+    {
+        $kartukel = KartuKK::all();
+        $pdf = Pdf::loadView('pengguna.kk.cetak_kk', compact('kartukel'))
+            ->setPaper('a4', 'landscape');
+        return $pdf->stream('kartu-keluarga.pdf');
     }
 }

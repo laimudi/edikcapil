@@ -24,6 +24,9 @@
                           href="{{ route('kartukk.create') }}">
                           Tambah Data
                           </a>
+                          <a class="btn btn-outline-danger" data-placement="top" href="{{ route('cetakKK') }}" target="_blank">
+                            <i class="bi bi-file-earmark-pdf-fill">Cetak KK</i>
+                          </a>
                       </li>
                     </ol>
                   </nav>

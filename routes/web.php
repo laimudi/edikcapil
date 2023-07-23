@@ -62,7 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Pengguna
     Route::group(['middleware' => ['role:pengguna'], 'prefix' => 'pengguna'], function () {
         Route::get('/', [App\Http\Controllers\pengguna\DashboardController::class, 'index'])->name('pengguna.dashboard');
+
         Route::resource('/kartukk', KartuKKController::class);
+        Route::get('kk/kartukk/cetakKK', [\App\Http\Controllers\pengguna\KartuKKController::class, 'cetakKK'])->name('cetakKK');
 
         Route::resource('/kartup', KtppController::class);
 
